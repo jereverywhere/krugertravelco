@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kruger Travel Co.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0EF;
+    --warm-white: #FAFAF7;
+    --charcoal: #1C1C1A;
+    --mid: #5A5A54;
+    --light: #A8A89E;
+    --accent: #6B3FA0;
+    --accent-secondary: #E8397D;
+    --border: #E2D9E8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--warm-white);
+    color: var(--charcoal);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 24px 60px;
+    background: rgba(250, 250, 247, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex; gap: 36px; list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-links a:hover { color: var(--charcoal); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 140px 60px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: url('hero.jpg') center center / cover no-repeat;
+    z-index: 0;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.45) 100%);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 700px;
+  }
+
+  .hero-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+  }
+
+  .hero-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 7vw, 88px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--warm-white);
+    margin-bottom: 32px;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.85);
+    max-width: 480px;
+    line-height: 1.75;
+    margin-bottom: 48px;
+  }
+
+  .hero-cta {
+    display: inline-flex; gap: 20px; align-items: center; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 14px 36px;
+    background: var(--charcoal);
+    color: var(--warm-white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.25s, transform 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--accent-secondary); transform: translateY(-1px); }
+
+  .btn-secondary {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-secondary:hover { color: var(--accent-secondary); border-color: var(--accent-secondary); }
+
+  /* SECTION SHARED */
+  section { padding: 100px 60px; }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: inline-block;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 54px);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+  }
+
+  .section-body {
+    font-size: 16px;
+    color: var(--mid);
+    line-height: 1.8;
+    max-width: 580px;
+  }
+
+  /* ABOUT */
+  .about {
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-text .section-body { margin-bottom: 28px; }
+
+  .about-detail {
+    display: flex; flex-direction: column; gap: 24px;
+  }
+
+  .detail-item {
+    border-left: 2px solid var(--accent);
+    padding-left: 20px;
+  }
+
+  .detail-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1;
+  }
+
+  .detail-label {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-top: 4px;
+  }
+
+  /* SERVICES */
+  .services { background: #F7F5F8; }
+
+  .services-intro {
+    display: block;
+    margin-bottom: 64px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--cream);
+  }
+
+  .service-card {
+    background: rgba(107,63,160,0.04);
+    padding: 40px 36px;
+    transition: background 0.25s;
+  }
+
+  .service-card:hover { background: rgba(107,63,160,0.09); }
+
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+
+  .service-desc {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.75;
+  }
+
+  /* PORTFOLIO */
+  .portfolio { background: var(--charcoal); color: var(--cream); }
+
+  .portfolio .section-title { color: var(--cream); }
+  .portfolio .section-body { color: var(--light); }
+
+  .portfolio-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-bottom: 60px;
+    align-items: end;
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .portfolio-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 32px;
+    transition: background 0.25s, border-color 0.25s;
+    cursor: pointer;
+  }
+
+  .portfolio-card:hover {
+    background: rgba(232,57,125,0.08);
+    border-color: var(--accent-secondary);
+  }
+
+  .portfolio-tag {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .portfolio-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+
+  .portfolio-desc {
+    font-size: 13px;
+    color: var(--light);
+    line-height: 1.7;
+  }
+
+  /* BLOG */
+  .blog { background: var(--cream); }
+
+  .blog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 48px;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .blog-card {
+    background: var(--warm-white);
+    padding: 36px;
+    border: 1px solid var(--border);
+    transition: border-color 0.25s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .blog-card:hover { border-color: var(--accent-secondary); }
+
+  .blog-tag {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .blog-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+
+  .blog-excerpt {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .blog-date {
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--light);
+  }
+
+  /* CONTACT */
+  .contact { background: var(--warm-white); }
+
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-group label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    padding: 14px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--charcoal);
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--accent); }
+
+  .form-group textarea { resize: vertical; min-height: 120px; }
+
+  .contact-info {
+    padding-top: 20px;
+  }
+
+  .contact-info .section-body { margin-bottom: 40px; }
+
+  .contact-detail {
+    margin-bottom: 24px;
+  }
+
+  .contact-detail-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 4px;
+  }
+
+  .contact-detail-val {
+    font-size: 16px;
+    color: var(--charcoal);
+  }
+
+  .contact-detail-val a { color: var(--charcoal); text-decoration: none; border-bottom: 1px solid var(--border); }
+  .contact-detail-val a:hover { border-color: var(--charcoal); }
+
+  /* FOOTER */
+  footer {
+    background: var(--charcoal);
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--cream);
+  }
+
+  .footer-copy {
+    font-size: 13px;
+    color: var(--light);
+    letter-spacing: 0.04em;
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 40px; height: 1px;
+    background: var(--accent);
+    margin: 28px 0;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 20px 28px; }
+    .nav-links { display: none; }
+    section { padding: 72px 28px; }
+    .hero { padding: 120px 28px 72px; }
+    .hero::before { width: 100%; opacity: 0.3; }
+    .about, .services-intro, .contact-inner, .portfolio-header { grid-template-columns: 1fr; gap: 40px; }
+    .services-grid, .portfolio-grid { grid-template-columns: 1fr; gap: 2px; }
+    .blog-grid { grid-template-columns: 1fr; }
+    .blog-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+  /* PRICING */
+  .pricing {
+    padding: 80px 60px;
+    background: var(--warm-white);
+  }
+
+  .pricing-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-bottom: 56px;
+    align-items: end;
+  }
+
+  .pricing-intro p {
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.8;
+  }
+
+  .pricing-blocks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: #e8e4ee;
+    border: 1px solid #e8e4ee;
+  }
+
+  .pricing-block {
+    background: var(--warm-white);
+    padding: 40px 44px;
+  }
+
+  .pricing-block-label {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .pricing-block-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 6px;
+  }
+
+  .pricing-block-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .pricing-block-price span {
+    font-size: 18px;
+    color: var(--light);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+  }
+
+  .pricing-block-desc {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .pricing-includes {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .pricing-includes li {
+    font-size: 13px;
+    color: var(--mid);
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .pricing-includes li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 5px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .pricing-addons {
+    margin-top: 2px;
+    background: var(--cream);
+    padding: 32px 44px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+  }
+
+  .pricing-addon-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 6px;
+  }
+
+  .pricing-addon-name {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 2px;
+  }
+
+  .pricing-addon-price {
+    font-size: 13px;
+    color: var(--accent);
+  }
+
+  .pricing-note {
+    margin-top: 28px;
+    font-size: 13px;
+    color: var(--light);
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+  }
+
+  @media (max-width: 900px) {
+    .pricing { padding: 48px 24px; }
+    .pricing-intro { grid-template-columns: 1fr; gap: 24px; margin-bottom: 32px; }
+    .pricing-blocks { grid-template-columns: 1fr; }
+    .pricing-addons { grid-template-columns: 1fr; gap: 20px; padding: 24px; }
+  }
+
+
+  /* HERO TESTIMONIAL CARD */
+  .testimonial-card {
+    position: absolute;
+    bottom: 48px;
+    right: 48px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 28px 32px;
+    max-width: 380px;
+    backdrop-filter: blur(4px);
+  }
+  .testimonial-stars {
+    color: #E8C97D;
+    font-size: 14px;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+  }
+  .testimonial-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+  .testimonial-author {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  @media (max-width: 768px) {
+    .testimonial-card {
+      display: none;
+    }
+  }
+
+  .nav-cta {
+    display: inline-block;
+    padding: 10px 24px;
+    background: var(--accent);
+    color: var(--cream) !important;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.25s;
+    margin-left: 24px;
+    white-space: nowrap;
+  }
+  /* REVIEWS BANNER */
+  .review-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 28px 32px;
+    min-width: 320px;
+    max-width: 320px;
+    flex-shrink: 0;
+  }
+
+  .review-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .review-author {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #E8C97D;
+  }
+
+  /* MOBILE NAV */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--charcoal);
+    transition: all 0.25s;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  @media (max-width: 900px) {
+    .nav-hamburger { display: flex; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--cream);
+      flex-direction: column;
+      padding: 16px 24px 24px;
+      gap: 0;
+      border-top: 1px solid var(--border);
+      z-index: 999;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { border-bottom: 1px solid var(--border); }
+    .nav-links li a { display: block; padding: 14px 0; font-size: 13px; }
+    .nav-cta { display: none; }
+  }
+
+  @keyframes scrollReviews {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo" onclick="showPage('home'); return false;">Kruger Travel Co.</a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#" onclick="showPage('home'); closeMobileNav(); return false;" data-page="home">Home</a></li>
+    <li><a href="#" onclick="showPage('about'); closeMobileNav(); return false;" data-page="about">About</a></li>
+    <li><a href="#" onclick="showPage('services'); closeMobileNav(); return false;" data-page="services">Travel Services</a></li>
+    <li><a href="#" onclick="showPage('pricing'); closeMobileNav(); return false;" data-page="pricing">Pricing</a></li>
+    <li><a href="#" onclick="showPage('itineraries'); closeMobileNav(); return false;" data-page="itineraries">Itineraries</a></li>
+    <li><a href="#" onclick="showPage('copywriting'); closeMobileNav(); return false;" data-page="copywriting">Copywriting</a></li>
+    <li><a href="#" onclick="showPage('photos'); closeMobileNav(); return false;" data-page="photos">Travel Photos</a></li>
+  </ul>
+  <a href="#" onclick="showPage('contact'); return false;" class="nav-cta">Plan Your Trip</a>
+</nav>
+
+<script>
+function showPage(page) {
+  const pages = ['home', 'about', 'pricing', 'itineraries', 'photos', 'contact', 'services', 'copywriting'];
+  pages.forEach(p => {
+    const el = document.getElementById('page-' + p);
+    if (el) el.style.display = 'none';
+  });
+  // Services visible on home and services page
+  const services = document.getElementById('page-services');
+  if (services) services.style.display = (page === 'home' || page === 'services') ? 'block' : 'none';
+  // Show "What I can do for you." subtitle only on the services page, below the heading
+  const subheading = document.getElementById('services-subheading');
+  if (subheading) subheading.textContent = page === 'services' ? 'What I can do for you.' : '';
+  // Show requested page (skip services since handled above)
+  if (page !== 'services') {
+    const el = document.getElementById('page-' + page);
+    if (el) el.style.display = 'block';
+  }
+  // Update active nav link
+  document.querySelectorAll('.nav-links a[data-page]').forEach(a => {
+    a.style.color = a.dataset.page === page ? 'var(--accent-secondary)' : '';
+  });
+  if (page === 'contact') {
+    const contactEl = document.getElementById('contact');
+    if (contactEl) { setTimeout(() => contactEl.scrollIntoView({behavior:'smooth'}), 50); }
+  } else {
+    window.scrollTo(0, 0);
+  }
+  if (page === 'photos') {
+    setTimeout(() => {
+      const container = document.getElementById('photo-masonry');
+      if (container && typeof buildGallery === 'function') buildGallery();
+    }, 50);
+  }
+}
+function toggleMobileNav() {
+  const hamburger = document.getElementById('nav-hamburger');
+  const links = document.getElementById('nav-links');
+  hamburger.classList.toggle('open');
+  links.classList.toggle('open');
+}
+function closeMobileNav() {
+  const hamburger = document.getElementById('nav-hamburger');
+  const links = document.getElementById('nav-links');
+  hamburger.classList.remove('open');
+  links.classList.remove('open');
+}
+window.addEventListener('DOMContentLoaded', () => showPage('home'));
+</script>
+
+<!-- PAGE: HOME -->
+<div id="page-home">
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Fora-Certified Travel Advisor</p>
+    <h1 class="hero-headline">Travel advice from<br>someone who's<br>been there.</h1>
+    <p class="hero-sub">Authentic, immersive trips, planned by someone who lives travel.</p>
+    <a href="#" onclick="showPage('contact'); return false;" class="btn-primary" style="display:inline-block;margin-top:32px;">Plan Your Trip</a>
+  </div>
+
+
+
+</section>
+</div>
+
+<!-- PAGE: ABOUT -->
+<div id="page-about" style="display:none;">
+<!-- ABOUT -->
+<section class="about" id="about" style="display:grid;grid-template-columns:minmax(0,1fr) 520px;gap:48px;align-items:center;">
+  <div class="about-text">
+    <p class="section-label" style="font-size:clamp(28px,4vw,48px);letter-spacing:-0.01em;text-transform:none;color:var(--accent);font-family:'Cormorant Garamond',serif;font-weight:300;margin-bottom:12px;display:block;">About</p>
+    <h2 class="section-title" style="font-size:clamp(20px,2.2vw,28px);font-weight:400;letter-spacing:0.01em;margin-bottom:24px;">I'm Jeremy Kruger.</h2>
+    <div class="divider"></div>
+    <p class="section-body">My passion for travel led me to moving abroad full time, living and working remotely in places like Mexico, Indonesia, Croatia, and Brazil. After seeing firsthand how life-changing travel can be, I started using that experience to help others travel the same way.</p>
+    <p class="section-body" style="margin-top: 16px;">My experience spending years abroad shapes how I approach every trip I plan. Real on-the-ground knowledge, genuine local connections, and an understanding of what it actually means to travel somewhere rather than just visit it. I like to put together the kind of trip where you come home feeling like you actually got to know a place.</p>
+    <p class="section-body" style="margin-top: 16px;">That time living abroad translates directly into the kind of access most advisors can't offer. The best taco stands in Mexico City that don't exist on the internet. Secret beaches in Albania before the crowds find them. A Balinese guide who will bring you to his family home. Connections in cities across the world who send me their current favorite spots every time a client heads their way. Years of actually living somewhere builds a different kind of knowledge than two weeks of visiting it — and that's not something you can google.</p>
+  </div>
+  <div style="overflow:hidden;min-height:520px;border-radius:2px;"><img style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" src="about.jpg" alt="Jeremy Kruger" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"></div>
+</section>
+
+</div>
+
+<!-- SERVICES (always visible) -->
+<section class="services" id="page-services">
+  <div class="services-intro" style="margin-bottom:48px;">
+    <p class="section-label" style="font-size:clamp(28px,4vw,48px);letter-spacing:-0.01em;text-transform:none;color:var(--accent);font-family:'Cormorant Garamond',serif;font-weight:300;margin-bottom:12px;display:block;" id="services-heading">Travel Services</p>
+    <h2 id="services-subheading" style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.2vw,28px);font-weight:400;letter-spacing:0.01em;color:var(--charcoal);margin-bottom:32px;"></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-name">Trip Planning</div>
+      <p class="service-desc">Custom itineraries built around how you actually want to travel. Flights, hotels, transfers, activities, handled from start to finish.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-name">Immersive Itineraries</div>
+      <p class="service-desc">These trips are built for travelers who want more than a highlights reel. Think small towns, slower days, and experiences shaped by local knowledge.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-name">Local Experiences</div>
+      <p class="service-desc">Real local recommendations, vetted connections, and experiences that don't show up on TripAdvisor.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-name">Flights, Accommodation &amp; Rental Cars</div>
+      <p class="service-desc">Flight research, hotel sourcing, and booking handled for you. I match you with the right hotels in the right neighborhoods, often with complimentary perks through Fora and Virtuoso, including room upgrades, daily breakfast, and resort credits. I also have access to business-class flight and rental car rates unavailable to the public.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-name">Price Monitoring</div>
+      <p class="service-desc">I use a rate-tracking system that monitors refundable hotel bookings and alerts me when a price drops. When it does, I rebook at the lower rate. You pay less without having to think about it.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-name">Groups, Weddings &amp; Retreats</div>
+      <p class="service-desc">Corporate retreats, weddings, multi-family vacations. I negotiate room blocks, review and manage contracts, source meeting and event space, and coordinate the countless logistical details.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- PAGE: PRICING -->
+<div id="page-pricing" style="display:none;">
+<!-- PRICING -->
+<section class="pricing" id="pricing" style="padding-top:120px;">
+  <div class="pricing-intro">
+    <div>
+      <p class="section-label" style="font-size:clamp(28px,4vw,48px);letter-spacing:-0.01em;text-transform:none;color:var(--accent);font-family:'Cormorant Garamond',serif;font-weight:300;margin-bottom:12px;display:block;">Pricing</p>
+      <h2 class="section-title" style="font-size:clamp(20px,2.2vw,28px);font-weight:400;letter-spacing:0.01em;margin-bottom:24px;">Transparent, flat-rate planning.</h2>
+      <div class="divider"></div>
+    </div>
+    <div>
+      <p>Hotel sourcing is complimentary when booked through me. You only pay when you want deeper, custom planning support. No hidden fees, no surprises. You always receive a clear quote before any planning begins.</p>
+    </div>
+  </div>
+
+  <div class="pricing-blocks">
+    <div class="pricing-block">
+      <div class="pricing-block-label">Complimentary</div>
+      <div class="pricing-block-title">Hotel Research &amp; Booking</div>
+      <div class="pricing-block-price">Free</div>
+      <div class="pricing-block-desc">Hotel sourcing is complimentary when you book the recommended hotel through me. Standalone hotel research without booking may be subject to a planning fee.</div>
+      <ul class="pricing-includes">
+        <li>Curated hotel shortlist tailored to your trip</li>
+        <li>Honest neighborhood and fit guidance</li>
+        <li>Booking management</li>
+        <li>Preferred partner perks when available</li>
+      </ul>
+    </div>
+    <div class="pricing-block">
+      <div class="pricing-block-label">Custom Trip Planning</div>
+      <div class="pricing-block-title">Full Itinerary Planning</div>
+      <div class="pricing-block-price">$35 <span>/ day of itinerary</span></div>
+      <div class="pricing-block-desc">Minimum $120 per trip. Hourly research available at $35/hour.</div>
+      <ul class="pricing-includes">
+        <li>Personalized day-by-day itinerary</li>
+        <li>Activity and experience recommendations</li>
+        <li>Dining strategy and reservations guidance</li>
+        <li>Logistics planning between cities</li>
+        <li>Revisions as needed</li>
+        <li>Pre-departure support</li>
+        <li>On-trip support and check-ins</li>
+        <li>Larger groups may incur additional fees</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pricing-addons" style="grid-template-columns:1fr 1fr 1fr;">
+    <div>
+      <div class="pricing-addon-label">Add-On</div>
+      <div class="pricing-addon-name">Flight Research &amp; Booking</div>
+      <div class="pricing-addon-price">$35 <span style="font-size:11px;color:var(--light);">one-way</span> &nbsp; $50 <span style="font-size:11px;color:var(--light);">round-trip</span></div>
+    </div>
+    <div>
+      <div class="pricing-addon-label">Add-On</div>
+      <div class="pricing-addon-name">Rush Planning</div>
+      <div class="pricing-addon-price">+$100 <span style="font-size:11px;color:var(--light);">(under 14 days)</span></div>
+    </div>
+    <div>
+      <div class="pricing-addon-label">Add-On</div>
+      <div class="pricing-addon-name">Group Travel</div>
+      <div class="pricing-addon-price">Custom quote</div>
+    </div>
+  </div>
+
+  <p class="pricing-note">As a general example, a fully planned week-long trip typically starts around $245 depending on complexity, destination, and level of support needed. Longer trips are eligible for discounted daily planning rates. Multi-city and complex flight routing quoted separately.</p>
+</section>
+</div>
+
+<!-- PAGE: ITINERARIES -->
+<div id="page-itineraries" style="display:none;">
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="portfolio-header">
+    <div>
+      <p class="section-label">Itineraries</p>
+      <h2 class="section-title">Where I've<br>Planned Trips</h2>
+    </div>
+    <div>
+      <div class="divider"></div>
+    </div>
+  </div>
+  <div style="max-width:680px;">
+    <p style="font-size:15px;color:var(--light);line-height:1.8;margin-bottom:24px;">In the past year alone, I've built itineraries across four continents: Italy, Croatia, Peru, Japan, Morocco, Portugal, Thailand, Colombia, Brazil, Chile, Poland, Albania, Georgia, France, Mexico, Canada, the Netherlands, and the United Kingdom. Some were two-week honeymoons. Some were quick long weekends. All of them were built from scratch around the specific traveler, not a template.</p>
+    <p style="font-size:15px;color:var(--light);line-height:1.8;margin-bottom:40px;">If you want to see what a real itinerary looks like before committing, reach out and I'll send you a sample from a destination you're considering. No obligation.</p>
+    <a href="#" onclick="showPage('contact'); return false;" class="btn-primary" style="display:inline-block;">Request a Sample Itinerary</a>
+  </div>
+  <div style="margin-top:56px;max-width:900px;">
+    <img src="raja-ampat.jpg" alt="Overwater bungalow and dock, Raja Ampat" style="width:100%;border-radius:2px;display:block;">
+    <p style="font-size:13px;color:var(--light);margin-top:12px;">Raja Ampat, Indonesia</p>
+  </div>
+</section>
+
+</div>
+
+
+<!-- PAGE: WRITING -->
+<div id="page-copywriting" style="display:none;">
+<section class="blog" style="padding: 120px 60px 80px;">
+  <div class="blog-header">
+    <div>
+      <p class="section-label" style="font-size:clamp(28px,4vw,48px);letter-spacing:-0.01em;text-transform:none;color:var(--accent);font-family:'Cormorant Garamond',serif;font-weight:300;margin-bottom:12px;display:block;">Copywriting</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.2vw,28px);font-weight:400;letter-spacing:0.01em;color:var(--charcoal);margin-bottom:16px;">Copy, content, and editorial work.</h2>
+      <p style="font-size:15px;color:var(--mid);max-width:600px;line-height:1.7;margin-bottom:32px;">I freelance as a copywriter and content creator for brands across travel, sports, and lifestyle. Below is a snapshot of what I offer.</p>
+      <div class="divider"></div>
+    </div>
+    <div></div>
+  </div>
+
+  <!-- Upwork credentials bar -->
+  <div style="display:flex;gap:0;align-items:center;background:var(--warm-white);border:1px solid var(--border);padding:28px 40px;margin-bottom:56px;flex-wrap:wrap;">
+    <div style="margin-right:32px;">
+      <div style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);font-weight:600;">Upwork Freelancer Credentials :</div>
+    </div>
+    <div style="display:flex;gap:40px;align-items:center;flex-wrap:wrap;">
+      <div>
+        <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--light);margin-bottom:4px;">Status</div>
+        <div style="font-size:14px;font-weight:400;color:var(--charcoal);">Top Rated Plus</div>
+      </div>
+      <div style="width:1px;height:36px;background:var(--border);"></div>
+      <div>
+        <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--light);margin-bottom:4px;">Talent Rank</div>
+        <div style="font-size:14px;font-weight:400;color:var(--charcoal);">Top 3%</div>
+      </div>
+      <div style="width:1px;height:36px;background:var(--border);"></div>
+      <div>
+        <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--light);margin-bottom:4px;">Job Success</div>
+        <div style="font-size:14px;font-weight:400;color:var(--charcoal);">100%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Writing category cards -->
+  <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px;">
+    <a href="https://www.upwork.com/freelancers/~019f2f88a80642e082?mp_source=share" target="_blank" rel="noopener" class="blog-card">
+      <div class="blog-tag">Copywriting</div>
+      <div class="blog-title">Copywriting</div>
+      <p class="blog-excerpt">Website copy, destination content, and full website rewrites for travel brands. Written from firsthand experience across 30+ countries, with an emphasis on storytelling that feels informed, credible, and never like a brochure. Clients include B-Adventuras, DRIVUSO, and TWS Tennis Tours.</p>
+    </a>
+    <a href="https://www.upwork.com/freelancers/~019f2f88a80642e082?mp_source=share" target="_blank" rel="noopener" class="blog-card">
+      <div class="blog-tag">SEO Blogs</div>
+      <div class="blog-title">SEO Blog Writing</div>
+      <p class="blog-excerpt">Long-form blog posts for travel, lifestyle, and sports clients. Keyword research, proper structure, and content that's worth reading.</p>
+    </a>
+    <a href="https://www.upwork.com/freelancers/~019f2f88a80642e082?mp_source=share" target="_blank" rel="noopener" class="blog-card">
+      <div class="blog-tag">Travel Documents</div>
+      <div class="blog-title">Roadbooks &amp; Trip Documents</div>
+      <p class="blog-excerpt">Client-facing roadbooks and travel itineraries formatted for print and digital delivery. Written to be genuinely useful on the ground, not just visually polished.</p>
+    </a>
+  </div>
+
+  <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+    <a href="https://www.upwork.com/freelancers/~019f2f88a80642e082?mp_source=share" target="_blank" rel="noopener" class="blog-card">
+      <div class="blog-tag">Ads &amp; Social</div>
+      <div class="blog-title">Ad Copy &amp; Social Content</div>
+      <p class="blog-excerpt">Facebook, Instagram, and LinkedIn copy: paid ads, campaign management, and organic content. Includes creative direction and graphic production for travel brands.</p>
+    </a>
+    <a href="https://www.upwork.com/freelancers/~019f2f88a80642e082?mp_source=share" target="_blank" rel="noopener" class="blog-card">
+      <div class="blog-tag">Sports Writing</div>
+      <div class="blog-title">Sports Editorial &amp; Analysis</div>
+      <p class="blog-excerpt">News, analysis, and betting-focused content covering NBA, WNBA, NFL, and UFC. Built for volume and deadline-driven workflows.</p>
+    </a>
+  </div>
+
+  <div style="margin-top:48px;padding-top:40px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
+    <p style="font-size:14px;color:var(--mid);max-width:560px;">Available for travel copy, SEO blog posts, sports editorial, and ad copy. Hire directly through Upwork or get in touch below.</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;">
+      <a href="https://www.upwork.com/freelancers/~019f2f88a80642e082?mp_source=share" target="_blank" rel="noopener" class="btn-secondary" style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;padding:12px 24px;border:1px solid var(--border);color:var(--mid);text-decoration:none;display:inline-block;">Hire on Upwork</a>
+      <a href="#" onclick="showPage('contact'); return false;" class="btn-primary" style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;padding:12px 24px;display:inline-block;">Get in Touch</a>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- PAGE: PHOTOS -->
+<div id="page-photos" style="display:none;">
+<section style="padding: 120px 60px 80px;">
+  <div style="margin-bottom: 56px;">
+    <p class="section-label" style="font-size:clamp(28px,4vw,48px);letter-spacing:-0.01em;text-transform:none;color:var(--accent);font-family:'Cormorant Garamond',serif;font-weight:300;margin-bottom:12px;display:block;">Travel Photos</p>
+    <div class="divider"></div>
+  </div>
+
+  <div id="photo-masonry" style="columns: 3; column-gap: 12px;">
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" onclick="closeLightbox()" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(28,28,26,0.95);z-index:999;align-items:center;justify-content:center;cursor:pointer;">
+    <img id="lightbox-img" src="" style="max-width:90vw;max-height:90vh;object-fit:contain;display:block;" />
+    <button onclick="lightboxNav(-1,event)" style="position:fixed;left:24px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--cream);font-size:32px;cursor:pointer;padding:16px;opacity:0.7;">&#8592;</button>
+    <button onclick="lightboxNav(1,event)" style="position:fixed;right:24px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--cream);font-size:32px;cursor:pointer;padding:16px;opacity:0.7;">&#8594;</button>
+    <button onclick="closeLightbox(event)" style="position:fixed;top:24px;right:32px;background:none;border:none;color:var(--cream);font-size:28px;cursor:pointer;opacity:0.7;">&#x2715;</button>
+  </div>
+</section>
+
+<style>
+  #photo-masonry img {
+    width: 100%;
+    display: block;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    break-inside: avoid;
+  }
+  #photo-masonry img:hover { opacity: 0.85; }
+  #lightbox { display: none; }
+  #lightbox.active { display: flex; }
+  @media (max-width: 900px) {
+    #photo-masonry { columns: 2; }
+  }
+  @media (max-width: 600px) {
+    #photo-masonry { columns: 1; }
+  }
+</style>
+
+<script>
+const photoIds = [
+  '15mdNKlfDN_-fCv_bm1IwHTEUw8JLa-jL',
+  '1kXjk-C-36CDrmYLbk1O6TtBRbEfYv-oZ',
+  '1RhXPsaZg2mbS_b_XU2fejNK36pklI6Yz',
+  '1l-sxbChkDdNQ0VrJ3JZ9TcE63CA0ttuW',
+  '1lnMghJPfMV1IUgun8-z5KQlmWEUk5TKI',
+  '1ucS6JclDxtaLy7qCZNA3dcgSQcczyy8M',
+  '1EAOvT25ehiR2K4z_DTJC5yAAIFj7PeNo',
+  '1Ejk3cyPjyBIUHdnAqmEEZmIKAZRxA-8G',
+  '15XOpME3q2q_JqGhvbkJ5XkAOQdL5gLlV',
+  '12-9MSFOG8Md__AcsUMiYdPZ2rM-Xndao',
+  '1srxBF4IHGJFin1Yh1QZBBQm93LPx16UT',
+  '1X1ft_IsocFgtC1Sq824wVSCE11pooYUi',
+  '1wg0k7qkY5VU5FkY5WqlDmJo742Ie2_9v',
+  '1U1qqdztNPtnrVpTXG0zKyISh4P7if_d2',
+  '1JxaWljDm37UGVyclwOG4zlqdULCuAJGK',
+  '1CNxhdgzEkT1khQS36Z1gI-HOx_FCO8-x',
+  '17zngoj8btl8Hq1Durs3G9MlqtlSIljl2',
+  '1x_AAlY1u9sXoOmvUo05eJ9_fr48daciI',
+  '1GQvfGMzHKWv0BQFqmkAho9lUXwBlllGF',
+  '1rI8dEngAgc3N4Jo35JMKlT6CTqV-lzl4',
+  '1UcQEl1rpenCkYjx_PtpBngfXn7_kUV2D',
+  '1Ueg_KQ5HAD70mqhpIJZJ41q2jau1khjH',
+  '1kv3BuHEjkfsUB_q5EIG6WUZ7LGJeYzb_',
+  '1V8urv1WEty0j-su12L8tj10dMyxVjK41',
+  '1cPP0nr42RF7mspXo3vIXWhltyAPTn8mA',
+  '18ZOH3kYECnWIH3X6OAAUNRkOjfPLR-VD',
+  '1CTExdb_gVwou-AZD64yajGwId3qwiwMz',
+  '1r6K_cl2sAEDB1fvGtP6dJBc-5VvFLGtn',
+  '1WU7psGx1SSEKcRe7ZGi2tMV-aadXRsbo',
+  '1qz9xzuLzchOcki4A-NHBRB6ZAbWel3vT',
+  '1wK0hadtB93i573NuFqY-TG4hT4NqCj94',
+  '1kmOlS9FCl3wJV5LZ4_dldTFaw9HSTmU_',
+  '1s-hBLt6wDNEBGlRsyopA1opuyhEG9EaS',
+  '1woPuTdCORQxV01B-KwAEczXwGQob54Y_',
+  '1zHlMnQHbip8GJ2-HQFMQIgiJRprfq4W4',
+  '1fVn4a7sfZ9wc6CLBikRJZKd4BUkq_ciu',
+  '13-uCEY1mchidNNlSA3eTxgoHMRkR2bQ5',
+  '1uT1D-S7_qn9GbjMMu6Ci7r3BWwZQ7cN_',
+  '1fqRH2ZVGW4-Nau4Pu07bs9VJObWlz1Dx',
+  '1m1atpvi6aQxY0tx4c7fu-7XX1mADaQwf',
+  '1j2JLwgCi-qqLPdI6gsIi2D10nl3Mv1AQ',
+  '1de-kXPfRlC4LLjXbQzok9_SI853wnAVS',
+  '1yLf5cNoT_bmyEc10_3aLzNn92F2XcHc5',
+  '1dQ-0cGEbJ03UsVMQPoR_GQ9VTYgcUknC',
+  '1iFwi-FIWl9Guf5eJI2tB6_8E3EIergGv',
+  '1iFLEtIMGXKZgFY676IQ-zYT3gicLZkW9',
+  '1CIZJUfoyLwL4vCq8Zj8DvND-tF9rxxqH',
+  '1QbDvSUaUY0O4kG6ElpCuIynRTKzc-Gq7',
+  '1G03hwfKFBWLnJPi407T366OJwf9g1COW',
+  '1t9cRdxlfyt2SqFDxxYGSpFCcJkvmvtTu',
+  '1nCx_j8emz2oLiwQBH6nAd5038BqNcmGH',
+  '1F_zmExJuo0d9EaHFYS2Mu-4XchVV6h1W',
+  '16XArGRaZXBVrXYA48_JJYKaKlrld8iv_',
+  '1BiYbobzpDDXi2uJoLgWrV1XfCDdMYVJ5',
+  '1hGVi0H4WPJ-mr8PFwUAgwelraCqeHxoL',
+  '1v_KSV_pqhkGZ0MEda-5ADe5E1sJqDDhJ',
+  '12EPMf9mza7kfT_vIQ2RvPMYwCdfd_z3O',
+  '1VRzZm8y9tGxHgEFrEYMST2ZDeO-qbXbm',
+  '1EthAYY02RQ1kT5DqYbIfZLu-cTfC_E51',
+  '1Ycgp7WOMD_r5Qu3FmYqcyTXIz6A_8mdY',
+  '1xC5Bnf-enVJgCXeegS3dYb6sfbWV2xJ9',
+  '19SjL9TwZHa8b6QiuWLKIGH9cbJ3op7kx',
+  '1h6KoxswrsFYI7bPFr8Wvd9U2ZEPJFgJi',
+  '1k1ygoTpZ1oznrmfms5suAu_YsgtXoTDS',
+  '1Ifsmuda1l8DUireEtkU7_aSowkPajHbK',
+  '1wKbKD-4-yKIco4cZgVTHDN4jw4WtY6ee',
+  '1khNm8Ge8I0nz-k8nPSD3dMwaQHrkPw1v',
+  '1DhyGJlgEQ_EllySYl1m6aoi5Sjtk_Acl',
+  '1vbVpOqtu0VaSAaI-emjOnQXho388N4JM',
+  '1W8MTPu7Zfsh1ErsVpHueADA6jIWPDoc1',
+  '1G9JamzSTkAMvikM48GMm3SgPHC916Lrm',
+  '1KmCgcitcgeX05JgeA-BO8tdCZGljMq8V',
+  '1JZBWZn4G1am5k27Cw-Tm75jLdC9hF-Xn',
+  '1OjwRmUHZ9mJ_wljyEDFBfcN2PblspAgj',
+  '1jEWtCgAif6XigOm_t6olrFfxXzJKQo3I',
+  '1wY5-qNsLM4fq06sFE0rDh8x_VJD4b1Y_',
+  '1qHhRvgjNYZfcY5kTzaygp_YIOkluBHK5',
+  '1Nn2he36iqGSLtCwo2wFGENnTrNnAUt5g',
+  '1Si2WfSVzcs9S8eQ9jxHIlLOnhMwDCEl8',
+  '1PO3y4f0T2e_y70jxQAsi2pSzlso_sR2f',
+  '140EDBIk06aDCi2mBctjgaxqdEduoFvmo',
+  '1Gbt8959-UU6AANi6MkzGC5rpk8eDHdcT',
+  '1aiyp9ATol_T1SgK96oFxsqfFIKGbr4dk',
+  '1df8l2TEblyDxfq581noTa72DJwX3vyct',
+  '12pRs9PfOpWjfuxATJN93Y7m_GfXCPaUx',
+  '1XcKn0J5voATWaC-P3nfk-FS9PqXaIANj',
+  '1jI_Um0-hc5qFsFyO8Bg-SqE0DPeryOkA',
+  '1ohMAuolv2jBEkXJh5eA8BNqX0IPQ0ALb',
+  '10tarqcSnZTFn3ULtNGq55PAo8qo6J7oo',
+  '1ozxOQJlKXCIY_YdrAagRiBT_EPYWBXOq',
+  '1ZHFWfJ9acFHUiQJdk89yrLa6EA841u00',
+  '1Q8dYHyZb4cvwUqserGe8X2jhiEnsZ6MG',
+  '10az3ninbaqvVVmxux55nT93cpWXfkgRP',
+  '10xt4Rr078h2pDJzkLnd-Kf4sXCix7qXq',
+  '119bVyfhAEks2AGXHxvjjEjNJ0Qd1OxmU',
+  '1273FtMacNLymbQyDHufGt524oDxDLllj',
+  '12QrtIsDMKLK4a-LyCGk4KBQVpG33aWhQ',
+  '14072sKQ50xE5qg-dT8gTpqpoIn44eOjm',
+  '15Oy6hY6BzlAoQm5Rv8ysWD3fiWLn9PaZ',
+  '16-Xaq1_PaU50SL1YgB0Qeuoy-d7i0V-6',
+  '16rkBb0AYjQNZ7YzQQUySrlUGO2P9y7W1',
+  '187i-NIP4XWuvMDdlGN-xLRZWOBCUilEw',
+  '199ZwUZ4UbI7HEy6uQMSzp5m5-uXrkHFU',
+  '19mvRp0LTPKp0_KUzcS66Hvin66LeD83E',
+  '1AMU48rU9vZsRb9hVvf4rWQ1lwwUI1Q_f',
+  '1BnwRGjY-LZcb57TeT1VSxWwxYVC8Rx38',
+  '1C_HPX0mktNM0MgER07k0tY8yXRN04B84',
+  '1D33mtwcHH3ck5pUTiGl1BjBGxogamMQg',
+  '1FeG67589uZaiBIxOhT32VBwHlGwyua3c',
+  '1FkVlsEnsVQCpcanYfERcApC9q61aKZ7h',
+  '1GrUOSABSQkVDVCNIv-IQxDj3rvuQNB5C',
+  '1HTuiOFzEll2j09Q6lM4uz2pJZwhFjVfh',
+  '1IY8UYmqnZ922wdzrmDw15rVjvtIxn2EL',
+  '1MYvSPs5mKl_75zkbzVvxDnnBpeud-UL9',
+  '1O17MU2zKoeFxYQ-ohPgcoOZYxEPJx_FC',
+  '1O73_JfuXjn0FPJWdMYF0SlNfpRr-Aq2z',
+  '1O7ZWvxbAB2vKAD9uCn1j8ZPF4y1IgLTO',
+  '1PlY43eLBQNDvr70xrXhIcfMO0sz_SEFg',
+  '1QKa_Abc3t0ykYnfm78wL6pixWTpWkTJz',
+  '1QN4MCOWkOygxjjRGoDxEJmRskUrnnoC4',
+  '1Qgoc87Ccpx5s-w2SlrHNUsG0D0hBETXC',
+
+  '1ShACEs-42vQo3p5eXi9vd-zC3mSlGKwM',
+
+  '1TWFNEjIt4MtP1IiXEZOJ0zAg69QEPgO_',
+  '1V_SAZzPHkw8VCSh4jjGjAUuH4X3iQPYA',
+  '1W98qKLFVzGRofR6yyAVQ2gSa23rO9RTn',
+  '1WYo0a6YrSQqrC5GOcwVZB72Z5bO8-J3g',
+  '1YosoOofCpxDqX58lqY3f_QGJjRqpfwCy',
+  '1Z62Js4Dvm-BeXeRqPD1PF1GdWEQQ1agI',
+  '1ZHW1L0JNgoKB-9owkfoNWWoK2zTawtbb',
+  '1ZoB46yfgWM0r2eo54JK0egl92KWyTcaE',
+  '1_6w0_HVxWgBWL-h2qLZJlYE9RFUWBJ09',
+  '1_rJCd4V2P_3rOqgAhp-8xgrTT9KEVose',
+  '1alLbwBfhlDSeCY3dae_yZ7HW9mihr9IJ',
+  '1d5rvcM_dnAr-PLkyD3KvEQ-gbfKGFgBd',
+  '1fd6XNFYo7VvftYKRiUJt20rBrJ8fn1ZB',
+  '1hAQNfm0H43fRhgyig5C0Hxj-XLixAJIc',
+  '1i-ZQoxhT6VFMPhq2J7D4wdRJxOgs1m0e',
+  '1kXTIWXzj3WZqq4QYJvfkqGkkNP2dyPmj',
+  '1klNvmA6TClorjveR-ABhsBsxy3bsyh1x',
+  '1mxnzS4kbG8IMCE93TtozN-BlvfKHUC_l',
+  '1nb_EHm9KpmkMKOAvpN4JtAA1dhRBq0Lv',
+  '1rfaK7qktVoF9Lk2lLnR2dYUDYw8ZkDVW',
+  '1rs76TiuFn-Gc2FdTD8VEWEOVeM_KhoHK',
+  '1rvPzOl1V3hLv2Orvp9dD_GXw0FYfslHa',
+  '1upVJR7hE7aqvDKxwuhsdqUk4xrh2yHJY',
+  '1xYWfLNcSjD1cKr5cgN0SUqzdSLyMGrKz',
+  '1yJt6EdOhs7FqP3mTkC3QQJ_w3k1HOWR0',
+  '1zyv8lQlnyDDhYdnbEb5faYxSN2bXAGSo',
+  '1evSS8UFMHtcDySYbUaAoNqeej-R_c45I',
+  '1KMrzDa277_2nm7JtFXRPbWLPOcVJfSGc',
+  '1uSlvZ8dHGDZwbuFMQVW9uTEadziThSsg',
+  '1JEbTavri8DPNX36mTzeh16fah0o4v5IW',
+  '10T7yB5P6EOViSyrED6z7715VH9dBCE_K'
+];
+
+let currentPhotoIndex = 0;
+
+function buildGallery() {
+  const container = document.getElementById('photo-masonry');
+  if (!container) return;
+  // Only build once per session; revisiting the page reuses what's already loaded
+  if (container.dataset.built === 'true') return;
+  container.dataset.built = 'true';
+  const shuffled = [...photoIds];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  currentShuffled = shuffled;
+  shuffled.forEach((id, i) => {
+    const img = document.createElement('img');
+    img.src = 'https://drive.google.com/thumbnail?id=' + id + '&sz=w800';
+    img.alt = 'Travel photo';
+    img.loading = 'lazy';
+    img.dataset.index = i;
+    img.dataset.id = id;
+    img.onclick = function() { openLightbox(parseInt(this.dataset.index), shuffled); };
+    container.appendChild(img);
+  });
+}
+
+let currentShuffled = [...photoIds];
+
+function openLightbox(index, shuffled) {
+  currentPhotoIndex = index;
+  if (shuffled) currentShuffled = shuffled;
+  const lb = document.getElementById('lightbox');
+  const img = document.getElementById('lightbox-img');
+  img.src = 'https://drive.google.com/thumbnail?id=' + currentShuffled[index] + '&sz=w1600';
+  lb.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(e) {
+  if (e) e.stopPropagation();
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function lightboxNav(dir, e) {
+  e.stopPropagation();
+  currentPhotoIndex = (currentPhotoIndex + dir + currentShuffled.length) % currentShuffled.length;
+  document.getElementById('lightbox-img').src = 'https://drive.google.com/thumbnail?id=' + currentShuffled[currentPhotoIndex] + '&sz=w1600';
+}
+
+document.addEventListener('keydown', function(e) {
+  const lb = document.getElementById('lightbox');
+  if (!lb.classList.contains('active')) return;
+  if (e.key === 'ArrowRight') lightboxNav(1, { stopPropagation: () => {} });
+  if (e.key === 'ArrowLeft') lightboxNav(-1, { stopPropagation: () => {} });
+  if (e.key === 'Escape') closeLightbox();
+});
+
+// Gallery init is hooked into the main showPage function below
+</script>
+</div>
+
+<!-- PAGE: CONTACT -->
+<div id="page-contact" style="display:none;">
+</div>
+
+<!-- REVIEWS BANNER -->
+<section id="reviews-banner" style="background:var(--charcoal);padding:60px 0;overflow:hidden;">
+  <div style="text-align:center;margin-bottom:40px;">
+    <p style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#E8C97D;margin-bottom:8px;">Client Reviews</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:var(--cream);line-height:1;">5.0</span>
+      <div>
+        <div style="color:#E8C97D;font-size:18px;letter-spacing:2px;">★★★★★</div>
+      </div>
+    </div>
+  </div>
+  <div style="position:relative;overflow:hidden;">
+    <div id="reviews-track" style="display:flex;gap:24px;width:max-content;animation:scrollReviews 200s linear infinite;">
+      <div class="review-card"><p class="review-text">"Jeremy was an incredible resource throughout our wedding planning process. He helped us identify and secure the perfect hotels for our room block, turning a task I knew nothing about into one of the simplest parts of our planning. From negotiating contracts to coordinating logistics, he was organized, responsive, and always on top of the details. His professionalism, attention to detail, and genuine commitment made a huge difference for us. We couldn't recommend him more."</p><p class="review-author">Evie V. , Santa Barbara</p></div>
+      <div class="review-card"><p class="review-text">"Responsive, proactive, and professional. Would highly recommend."</p><p class="review-author">Nick W. , New York City</p></div>
+      <div class="review-card"><p class="review-text">"Jeremy was amazing to work with! He provided a detailed agenda for our off-site retreat and coordinated everyone's travel, hotel, dinners, and team activities. Detail oriented, a clear communicator, and went above and beyond for everything we asked. Would highly recommend for any team or work trip."</p><p class="review-author">Bisect Hosting Team , Austin, Texas</p></div>
+      <div class="review-card"><p class="review-text">"Jeremy really made the travel experience much easier and more fulfilling."</p><p class="review-author">Xavier T. , Miami</p></div>
+      <div class="review-card"><p class="review-text">"When my sister mentioned we were going to use a travel service, my brain went immediately to a fully restrictive, inflexible tour-based vacation. Suffice it to say, when I got Jeremy's itinerary, I knew immediately those concerns weren't something to worry about."</p><p class="review-author">Julie V. , Santiago</p></div>
+      <div class="review-card"><p class="review-text">"He was honest about my options and once I decided he took care of all booking swiftly. I felt no stress."</p><p class="review-author">Luke S. , Tokyo</p></div>
+      <div class="review-card"><p class="review-text">"Jeremy gave us great options for hotels to choose from. He is also available to pivot when life events happen and changes need to be made. Extremely helpful, professional and a very good listener. Traveling can be a challenge but with Jeremy's help our trip ran smoothly. We are very grateful."</p><p class="review-author">Terry P. , Peru</p></div>
+      <div class="review-card"><p class="review-text">"Jeremy found me a hotel in the perfect location. He even considered ease of transport to other areas I wanted to see."</p><p class="review-author">Jamie B. , London</p></div>
+      <div class="review-card"><p class="review-text">"It's a pleasure working with Jeremy. I have gotten his help planning multiple trips all around the globe. He is always on top of his tasks, very communicative, and highly skilled."</p><p class="review-author">Bailey L.</p></div>
+      <div class="review-card"><p class="review-text">"Outstanding advisor, truly differentiated experience that made our trip enjoyable and seamless."</p><p class="review-author">Max B. , Tokyo</p></div>
+      <div class="review-card"><p class="review-text">"Jeremy was excellent: super responsive, proactive, and helpful. He organized travel throughout San Francisco for our NGO's board meeting. I will certainly be calling him for future travel needs."</p><p class="review-author">Lucy K. , San Francisco</p></div>
+      <div class="review-card"><p class="review-text">"Jeremy did a great job booking the hotel and making the process seamless."</p><p class="review-author">Tom P. , Mexico City</p></div>
+      <div class="review-card"><p class="review-text">"Jeremy's communication was extremely timely. He quickly found us great options and got us a full refund on our cancellation."</p><p class="review-author">Andrew G. , Colombia</p></div>
+      <div class="review-card"><p class="review-text">"Responsive, kind, and attentive. Especially good at helping us make changes to room reservations."</p><p class="review-author">Ben H. , Mexico</p></div>
+      <div class="review-card"><p class="review-text">"He curated multiple excellent options and clearly explained the pros of each. We were able to book within minutes of receiving them."</p><p class="review-author">Elizabeth P. , Mexico City</p></div>
+      <div class="review-card"><p class="review-text">"Missed my connection in Paris. Called Jeremy in a panic and he calmly booked me the earliest flight out and a hotel nearby."</p><p class="review-author">Amy K. , France</p></div>
+      <div class="review-card"><p class="review-text">"Jeremy gave me lots of hotel options within my price point and made the decision and the whole process super easy."</p><p class="review-author">Sarah R. , Europe</p></div>
+      <div class="review-card"><p class="review-text">"Jeremy went above and beyond to find me the best hotel options. Ksamil was very busy and it wasn't an easy job."</p><p class="review-author">Jamie B. , Albania</p></div>
+      <!-- Duplicate set for seamless loop -->
+      <div class="review-card"><p class="review-text">"Jeremy was an incredible resource throughout our wedding planning process. He helped us identify and secure the perfect hotels for our room block, turning a task I knew nothing about into one of the simplest parts of our planning. From negotiating contracts to coordinating logistics, he was organized, responsive, and always on top of the details. His professionalism, attention to detail, and genuine commitment made a huge difference for us. We couldn't recommend him more."</p><p class="review-author">Evie V. , Santa Barbara</p></div>
+      <div class="review-card"><p class="review-text">"Responsive, proactive, and professional. Would highly recommend."</p><p class="review-author">Nick W. , New York City</p></div>
+      <div class="review-card"><p class="review-text">"Jeremy was amazing to work with! He provided a detailed agenda for our off-site retreat and coordinated everyone's travel, hotel, dinners, and team activities. Detail oriented, a clear communicator, and went above and beyond for everything we asked. Would highly recommend for any team or work trip."</p><p class="review-author">Bisect Hosting Team , Austin, Texas</p></div>
+      <div class="review-card"><p class="review-text">"Jeremy really made the travel experience much easier and more fulfilling."</p><p class="review-author">Xavier T. , Miami</p></div>
+      <div class="review-card"><p class="review-text">"When my sister mentioned we were going to use a travel service, my brain went immediately to a fully restrictive, inflexible tour-based vacation. Suffice it to say, when I got Jeremy's itinerary, I knew immediately those concerns weren't something to worry about."</p><p class="review-author">Julie V. , Santiago</p></div>
+      <div class="review-card"><p class="review-text">"He was honest about my options and once I decided he took care of all booking swiftly. I felt no stress."</p><p class="review-author">Luke S. , Tokyo</p></div>
+      <div class="review-card"><p class="review-text">"Jeremy gave us great options for hotels to choose from. He is also available to pivot when life events happen and changes need to be made. Extremely helpful, professional and a very good listener. Traveling can be a challenge but with Jeremy's help our trip ran smoothly. We are very grateful."</p><p class="review-author">Terry P. , Peru</p></div>
+      <div class="review-card"><p class="review-text">"Jeremy found me a hotel in the perfect location. He even considered ease of transport to other areas I wanted to see."</p><p class="review-author">Jamie B. , London</p></div>
+      <div class="review-card"><p class="review-text">"It's a pleasure working with Jeremy. I have gotten his help planning multiple trips all around the globe. He is always on top of his tasks, very communicative, and highly skilled."</p><p class="review-author">Bailey L.</p></div>
+      <div class="review-card"><p class="review-text">"Outstanding advisor, truly differentiated experience that made our trip enjoyable and seamless."</p><p class="review-author">Max B. , Tokyo</p></div>
+      <div class="review-card"><p class="review-text">"Jeremy was excellent: super responsive, proactive, and helpful. He organized travel throughout San Francisco for our NGO's board meeting. I will certainly be calling him for future travel needs."</p><p class="review-author">Lucy K. , San Francisco</p></div>
+      <div class="review-card"><p class="review-text">"Jeremy did a great job booking the hotel and making the process seamless."</p><p class="review-author">Tom P. , Mexico City</p></div>
+      <div class="review-card"><p class="review-text">"Jeremy's communication was extremely timely. He quickly found us great options and got us a full refund on our cancellation."</p><p class="review-author">Andrew G. , Colombia</p></div>
+      <div class="review-card"><p class="review-text">"Responsive, kind, and attentive. Especially good at helping us make changes to room reservations."</p><p class="review-author">Ben H. , Mexico</p></div>
+      <div class="review-card"><p class="review-text">"He curated multiple excellent options and clearly explained the pros of each. We were able to book within minutes of receiving them."</p><p class="review-author">Elizabeth P. , Mexico City</p></div>
+      <div class="review-card"><p class="review-text">"Missed my connection in Paris. Called Jeremy in a panic and he calmly booked me the earliest flight out and a hotel nearby."</p><p class="review-author">Amy K. , France</p></div>
+      <div class="review-card"><p class="review-text">"Jeremy gave me lots of hotel options within my price point and made the decision and the whole process super easy."</p><p class="review-author">Sarah R. , Europe</p></div>
+      <div class="review-card"><p class="review-text">"Jeremy went above and beyond to find me the best hotel options. Ksamil was very busy and it wasn't an easy job."</p><p class="review-author">Jamie B. , Albania</p></div>
+    </div>
+    <!-- Fade edges -->
+    <div style="position:absolute;top:0;left:0;width:120px;height:100%;background:linear-gradient(to right,var(--charcoal),transparent);pointer-events:none;"></div>
+    <div style="position:absolute;top:0;right:0;width:120px;height:100%;background:linear-gradient(to left,var(--charcoal),transparent);pointer-events:none;"></div>
+  </div>
+</section>
+
+<!-- PERSISTENT CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <p class="section-label">Contact</p>
+      <h2 class="section-title">Let's plan<br>something.</h2>
+      <div class="divider"></div>
+      <p class="section-body">Whether you're ready to book or just starting to think about a trip, reach out.</p>
+      <div style="margin-top: 40px;">
+        <div class="contact-detail">
+          <div class="contact-detail-label">Email</div>
+          <div class="contact-detail-val"><a href="mailto:jeremy.kruger@fora.travel">jeremy.kruger@fora.travel</a></div>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" action="https://formspree.io/f/mpqkvyga" method="POST">
+      <input type="hidden" name="_subject" value="New inquiry — Kruger Travel Co.">
+      <input type="hidden" name="_next" value="">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" name="first_name" placeholder="Jane" required>
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" name="last_name" placeholder="Smith">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="jane@example.com" required>
+      </div>
+      <div class="form-group">
+        <label>I'm interested in</label>
+        <select name="interest">
+          <option value="">Select one</option>
+          <option>Trip Planning</option>
+          <option>Group or Corporate Travel</option>
+          <option>Something Else</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tell me about your trip</label>
+        <textarea name="message" placeholder="Destinations, dates, what you're looking for..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="width: fit-content; cursor: pointer; border: none;">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Kruger Travel Co.</div>
+  <div class="footer-copy">&copy; 2026 Jeremy Kruger. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
